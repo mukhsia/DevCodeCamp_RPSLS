@@ -38,7 +38,23 @@ namespace RPSLS
 
         public int ChooseNumberOfHumanPlayers()
         {
-            return 0;
+            int playerNum = 0;
+            // Step 2: Ask how many human players will be playing
+            do
+            {
+                Console.Write("Enter the number of players (1-2): ");
+                playerNum = Convert.ToInt32(Console.ReadLine());
+
+                if(playerNum != 1 && playerNum != 2)
+                {
+                    // Step 3c: If less than 1 or more than 2
+                    //              Step 3c-1: Display "Must choose 1 or 2 players"
+                    //              Step 3c-2: go back to step 2
+                    Console.WriteLine("Please enter the number '1' for one player or '2' for 2 players, without the quotation marks.\n");
+                }
+            } while (playerNum != 1 && playerNum != 2);
+
+            return playerNum;
         }
 
         public void CreatePlayerObjects(int numberOfHumanPlayers)
@@ -62,6 +78,9 @@ namespace RPSLS
             WelcomeMessage();
 
             // Step 2: Ask how many human players will be playing
+            int playerNum = ChooseNumberOfHumanPlayers();
+            Console.WriteLine(playerNum);
+
 
             // Step 3a: If 1 player is playing
             //              Step 3a-1: Ask for first player name
@@ -70,9 +89,7 @@ namespace RPSLS
             //              Step 3b-1: Ask for first player name
             //              Step 3b-2: Ask for second player name
             //              Step 3b-3: Instantiate player 1 and 2 as human players
-            // Step 3c: If less than 1 or more than 2
-            //              Step 3c-1: Display "Must choose 1 or 2 players"
-            //              Step 3c-2: go back to step 2
+
 
             // (Game Rounds Start)
             // Step 4: Ask a gesture player 1 will play
