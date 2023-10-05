@@ -46,6 +46,38 @@ namespace RPSLS
 
         public void RunGame()
         {
+            // Step 1: Display the rules of the game 
+            // Step 2: Ask how many human players will be playing
+            // Step 3a: If 1 player is playing
+            //              Step 3a-1: Ask for first player name
+            //              Step 3a-2: Instantiate player 1 as a human player and player 2 as a computer player
+            // Step 3b: If 2 players are playing
+            //              Step 3b-1: Ask for first player name
+            //              Step 3b-2: Ask for second player name
+            //              Step 3b-3: Instantiate player 1 and 2 as human players
+            // Step 3c: If less than 1 or more than 2
+            //              Step 3c-1: Display "Must choose 1 or 2 players"
+            //              Step 3c-2: go back to step 2
+
+            // (Game Rounds Start)
+            // Step 4: Ask a gesture player 1 will play
+            // Step 5: Ask a gesture human player 2 will play OR select a random gesture for computer player 2 
+            // Step 6: Compare gestures of player 1 and player 2
+            //          Step 6-1: Display gestures of player 1 and player 2
+            //          Step 6-2a: If player 1 and player 2 plays the same gesture
+            //                      Step 7-2a-1: It is a tie
+            //          Step 6-2b: If player 1 plays Rock and player 2 plays Scissors or Lizard, OR-
+            //                      If player 1 plays Scissors and player 2 plays Paper or Lizard, OR-
+            //                      If player 1 plays Paper and player 2 plays Rock or Spock, OR-
+            //                      If player 1 plays Lizard and player 2 plays Spock or Paper, OR-
+            //                      If player 1 plays Spock and player 2 plays Scissors or Rock.
+            //                          Step 7-2b-1:  player 1 wins the round
+            //          Step 6-2c: Else, player 2 wins the round
+            //
+            // Step 7: Check if a player has won 2 rounds (Best-of-Three victory condition)
+            //          Step 7a: If yes, display the winner and end the game
+            //          Step 7b: else, go back to step 4
+
             WelcomeMessage();
         }
     }
