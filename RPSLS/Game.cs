@@ -22,6 +22,18 @@ namespace RPSLS
         public void WelcomeMessage()
         {
             Console.WriteLine("Welcome to RPSLS! Here are the rules:\n");
+
+            // Step 1: Display the rules of the game 
+            Console.WriteLine("Rock crushes Scissors\n" +
+                "Scissors cuts Paper \n" +
+                "Paper covers Rock\n" +
+                "Rock crushes Lizard\n" +
+                "Lizard poisons Spock\n" +
+                "Spock smashes Scissors\n" +
+                "Scissors decapitates Lizard\n" +
+                "Lizard eats Paper\n" +
+                "Paper disproves Spock\n" +
+                "Spock vaporizes Rock\n");
         }
 
         public int ChooseNumberOfHumanPlayers()
@@ -47,7 +59,10 @@ namespace RPSLS
         public void RunGame()
         {
             // Step 1: Display the rules of the game 
+            WelcomeMessage();
+
             // Step 2: Ask how many human players will be playing
+
             // Step 3a: If 1 player is playing
             //              Step 3a-1: Ask for first player name
             //              Step 3a-2: Instantiate player 1 as a human player and player 2 as a computer player
@@ -77,8 +92,6 @@ namespace RPSLS
             // Step 7: Check if a player has won 2 rounds (Best-of-Three victory condition)
             //          Step 7a: If yes, display the winner and end the game
             //          Step 7b: else, go back to step 4
-
-            WelcomeMessage();
         }
     }
 }
