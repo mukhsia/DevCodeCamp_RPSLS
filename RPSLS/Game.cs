@@ -25,7 +25,7 @@ namespace RPSLS
 
             // Step 1: Display the rules of the game 
             Console.WriteLine("Rock crushes Scissors\n" +
-                "Scissors cuts Paper \n" +
+                "Scissors cuts Paper\n" +
                 "Paper covers Rock\n" +
                 "Rock crushes Lizard\n" +
                 "Lizard poisons Spock\n" +
@@ -81,6 +81,24 @@ namespace RPSLS
             int playerNum = ChooseNumberOfHumanPlayers();
             Console.WriteLine(playerNum);
 
+            ComputerPlayer testComputer = new ComputerPlayer("");
+
+            /*
+            for (int i = 0; i < 10; ++i)
+            {
+                testComputer.ChooseGesture();
+                Console.WriteLine(testComputer.chosenGesture);
+            }
+            */
+
+            /*
+            HumanPlayer testHuman = new HumanPlayer("testo");
+
+            testHuman.ChooseGesture();
+            Console.WriteLine(testHuman.chosenGesture);
+
+            Console.WriteLine($"{testHuman.name} chose {testHuman.chosenGesture}");
+            */
 
             // Step 3a: If 1 player is playing
             //              Step 3a-1: Ask for first player name
