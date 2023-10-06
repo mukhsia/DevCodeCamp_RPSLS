@@ -20,7 +20,7 @@ namespace RPSLS
 
             do
             {
-                Console.WriteLine("Gestures:");
+                Console.WriteLine("\nGestures:");
                 
                 foreach(string gesture in gestures)
                 {
