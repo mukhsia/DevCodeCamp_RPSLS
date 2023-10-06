@@ -113,6 +113,8 @@ namespace RPSLS
                 // Step 3b-3: Instantiate player 2 as a human player
                 playerTwo = new HumanPlayer(nameInput);
             }
+
+            Console.WriteLine($"\nPlayer 1 is {playerOne.name}, Player 2 is {playerTwo.name}\n");
         }
 
         public void CompareGestures()
@@ -157,7 +159,17 @@ namespace RPSLS
 
         public void DisplayGameWinner()
         {
+            string winner = playerOne.name;
+            string loser = playerTwo.name;
 
+            if(playerTwo.score == 2)
+            {
+                winner = playerTwo.name;
+                loser = playerOne.name;
+            }
+
+            Console.WriteLine($"\n{winner} is victorious!");
+            Console.WriteLine($"Better luck next time, {loser}.");
         }
 
         public void RunGame()
@@ -171,8 +183,7 @@ namespace RPSLS
             // Step 3: Depending on the number of players, create human objects
             CreatePlayerObjects(playerNum);
 
-            Console.WriteLine($"Player 1 is {playerOne.name}, Player 2 is {playerTwo.name}");
-
+            Console.WriteLine("\n---- Game Start! ----\n");
             // Step 7: Check if a player has won 2 rounds (Best-of-Three victory condition)
             while (playerOne.score < 2 && playerTwo.score < 2)
             {
@@ -188,6 +199,8 @@ namespace RPSLS
             }
 
             // Step 7a: If yes, display the winner and end the game
+            DisplayGameWinner();
+            Console.WriteLine("\n---- Game Over! ----\n");
             
         }
     }
