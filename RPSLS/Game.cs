@@ -201,7 +201,6 @@ namespace RPSLS
             // Step 7a: If yes, display the winner and end the game
             DisplayGameWinner();
             Console.WriteLine("\n---- Game Over! ----\n");
-            
         }
     }
 }

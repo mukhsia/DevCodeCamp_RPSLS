@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace RPSLS
 
         }
 
+        // Step 5: select a random gesture for computer player
         public override void ChooseGesture()
         {
             Random randomNumberGen = new Random();
