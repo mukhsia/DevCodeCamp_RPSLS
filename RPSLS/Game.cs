@@ -40,20 +40,19 @@ namespace RPSLS
         {
             int playerNum = 0;
             // Step 2: Ask how many human players will be playing
-            do
+            while (playerNum != 1 && playerNum != 2)
             {
                 Console.Write("Enter the number of players (1-2): ");
                 playerNum = Convert.ToInt32(Console.ReadLine());
 
-                if(playerNum != 1 && playerNum != 2)
+                if (playerNum != 1 && playerNum != 2)
                 {
                     // Step 3c: If less than 1 or more than 2
                     //              Step 3c-1: Display "Must choose 1 or 2 players"
                     //              Step 3c-2: go back to step 2
                     Console.WriteLine("Please enter the number '1' for one player or '2' for 2 players, without the quotation marks.\n");
                 }
-            } while (playerNum != 1 && playerNum != 2);
-
+            }
             return playerNum;
         }
 
@@ -118,7 +117,42 @@ namespace RPSLS
 
         public void CompareGestures()
         {
+            // Step 6-1: Display gestures of player 1 and player 2
+            Console.WriteLine($"\n{playerOne.name} plays {playerOne.chosenGesture}");
+            Console.WriteLine($"{playerTwo.name} plays {playerTwo.chosenGesture}");
 
+            string p1Gesture = playerOne.chosenGesture;
+            string p2Gesture = playerTwo.chosenGesture;
+
+            // Step 6-2a: If player 1 and player 2 plays the same gesture                   
+            if (p1Gesture == p2Gesture)
+            {
+                // Step 7 - 2a - 1: It is a tie
+                Console.WriteLine("It is a tie.\nThe round ends in a tie");
+            }
+            // Step 6-2b: If player 1 plays Rock and player 2 plays Scissors or Lizard, OR-
+            // If player 1 plays Scissors and player 2 plays Paper or Lizard, OR-
+            // If player 1 plays Paper and player 2 plays Rock or Spock, OR-
+            // If player 1 plays Lizard and player 2 plays Spock or Paper, OR-
+            // If player 1 plays Spock and player 2 plays Scissors or Rock.            
+            else if ((p1Gesture == "rock" && (p2Gesture == "scissors" || p2Gesture == "lizard"))
+                || (p1Gesture == "scissors" && (p2Gesture == "paper" || p2Gesture == "lizard"))
+                || (p1Gesture == "paper" && (p2Gesture == "rock" || p2Gesture == "Spock"))
+                || (p1Gesture == "lizard" && (p2Gesture == "Spock" || p2Gesture == "paper"))
+                || (p1Gesture == "Spock" && (p2Gesture == "scissors" || p2Gesture == "rock")))
+            {
+                // Step 7-2b-1:  player 1 wins the round
+                Console.WriteLine($"{playerOne.chosenGesture} beats {playerTwo.chosenGesture}");
+                Console.WriteLine($"{playerOne.name} won the round.");
+                ++playerOne.score;
+            }
+            else  
+            {
+                // Step 6-2c: Else, player 2 wins the round
+                Console.WriteLine($"{playerTwo.chosenGesture} beats {playerOne.chosenGesture}");
+                Console.WriteLine($"{playerTwo.name} won the round.");
+                ++playerTwo.score;
+            }
         }
 
         public void DisplayGameWinner()
@@ -139,24 +173,22 @@ namespace RPSLS
 
             Console.WriteLine($"Player 1 is {playerOne.name}, Player 2 is {playerTwo.name}");
 
-            // (Game Rounds Start)
-            // Step 4: Ask a gesture player 1 will play
-            // Step 5: Ask a gesture human player 2 will play OR select a random gesture for computer player 2 
-            // Step 6: Compare gestures of player 1 and player 2
-            //          Step 6-1: Display gestures of player 1 and player 2
-            //          Step 6-2a: If player 1 and player 2 plays the same gesture
-            //                      Step 7-2a-1: It is a tie
-            //          Step 6-2b: If player 1 plays Rock and player 2 plays Scissors or Lizard, OR-
-            //                      If player 1 plays Scissors and player 2 plays Paper or Lizard, OR-
-            //                      If player 1 plays Paper and player 2 plays Rock or Spock, OR-
-            //                      If player 1 plays Lizard and player 2 plays Spock or Paper, OR-
-            //                      If player 1 plays Spock and player 2 plays Scissors or Rock.
-            //                          Step 7-2b-1:  player 1 wins the round
-            //          Step 6-2c: Else, player 2 wins the round
-            //
             // Step 7: Check if a player has won 2 rounds (Best-of-Three victory condition)
-            //          Step 7a: If yes, display the winner and end the game
-            //          Step 7b: else, go back to step 4
+            while (playerOne.score < 2 || playerTwo.score < 2)
+            {
+                // Step 7b: else, go back to step 4
+                // Step 4: Ask a gesture player 1 will play
+                playerOne.ChooseGesture();
+
+                // Step 5: Ask a gesture human player 2 will play OR select a random gesture for computer player 2 
+                playerTwo.ChooseGesture();
+
+                // Step 6: Compare gestures of player 1 and player 2
+                CompareGestures();
+            }
+
+            // Step 7a: If yes, display the winner and end the game
+            
         }
     }
 }
