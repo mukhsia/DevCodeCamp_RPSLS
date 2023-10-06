@@ -174,7 +174,7 @@ namespace RPSLS
             Console.WriteLine($"Player 1 is {playerOne.name}, Player 2 is {playerTwo.name}");
 
             // Step 7: Check if a player has won 2 rounds (Best-of-Three victory condition)
-            while (playerOne.score < 2 || playerTwo.score < 2)
+            while (playerOne.score < 2 && playerTwo.score < 2)
             {
                 // Step 7b: else, go back to step 4
                 // Step 4: Ask a gesture player 1 will play
