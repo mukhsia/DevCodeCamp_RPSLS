@@ -59,7 +59,61 @@ namespace RPSLS
 
         public void CreatePlayerObjects(int numberOfHumanPlayers)
         {
+            string nameInput = "";
+            bool nameEmpty = true;
 
+            while (nameEmpty)
+            {
+                // Step 3a-1: Ask for first player name
+                Console.Write("Player 1, please enter your name: ");
+                nameInput = Console.ReadLine();
+
+
+                if (String.IsNullOrEmpty(nameInput))
+                {
+                    Console.WriteLine("\nPlease enter a name.");
+                }
+                else
+                {
+                    nameEmpty = false;
+                }
+            }
+
+            // Instantiate player 1 as a human player
+            playerOne = new HumanPlayer(nameInput);
+
+            // Step 3a: If 1 player is playing
+            if (numberOfHumanPlayers == 1)
+            {
+                // Step 3a-2: Instantiate player 2 as a computer player
+                playerTwo = new ComputerPlayer("");
+            } 
+            else if(numberOfHumanPlayers == 2)      // Step 3b: If 2 players are playing
+            {
+                // Step 3b-2: Ask for second player name
+                nameInput = "";
+                nameEmpty = true;
+
+                while (nameEmpty)
+                {
+                    // Step 3a-1: Ask for first player name
+                    Console.Write("Player 2, please enter your name: ");
+                    nameInput = Console.ReadLine();
+
+
+                    if (String.IsNullOrEmpty(nameInput))
+                    {
+                        Console.WriteLine("\nPlease enter a name.");
+                    }
+                    else
+                    {
+                        nameEmpty = false;
+                    }
+                }
+
+                // Step 3b-3: Instantiate player 2 as a human player
+                playerTwo = new HumanPlayer(nameInput);
+            }
         }
 
         public void CompareGestures()
@@ -79,35 +133,11 @@ namespace RPSLS
 
             // Step 2: Ask how many human players will be playing
             int playerNum = ChooseNumberOfHumanPlayers();
-            Console.WriteLine(playerNum);
 
-            ComputerPlayer testComputer = new ComputerPlayer("");
+            // Step 3: Depending on the number of players, create human objects
+            CreatePlayerObjects(playerNum);
 
-            /*
-            for (int i = 0; i < 10; ++i)
-            {
-                testComputer.ChooseGesture();
-                Console.WriteLine(testComputer.chosenGesture);
-            }
-            */
-
-            /*
-            HumanPlayer testHuman = new HumanPlayer("testo");
-
-            testHuman.ChooseGesture();
-            Console.WriteLine(testHuman.chosenGesture);
-
-            Console.WriteLine($"{testHuman.name} chose {testHuman.chosenGesture}");
-            */
-
-            // Step 3a: If 1 player is playing
-            //              Step 3a-1: Ask for first player name
-            //              Step 3a-2: Instantiate player 1 as a human player and player 2 as a computer player
-            // Step 3b: If 2 players are playing
-            //              Step 3b-1: Ask for first player name
-            //              Step 3b-2: Ask for second player name
-            //              Step 3b-3: Instantiate player 1 and 2 as human players
-
+            Console.WriteLine($"Player 1 is {playerOne.name}, Player 2 is {playerTwo.name}");
 
             // (Game Rounds Start)
             // Step 4: Ask a gesture player 1 will play

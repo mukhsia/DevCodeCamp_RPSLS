@@ -31,11 +31,11 @@ namespace RPSLS
                 Console.Write($"{name}, please choose a gesture to play: ");
                 gestureInput = Console.ReadLine();
 
-                if (gestureInput == null || !gestures.Contains(gestureInput))
+                if (!gestures.Contains(gestureInput))
                 {
                     Console.WriteLine("\nPlease enter a valid gesture.");
                 }
-            } while(gestureInput == null || !gestures.Contains(gestureInput));
+            } while(!gestures.Contains(gestureInput));
 
             chosenGesture = gestureInput;
         }
